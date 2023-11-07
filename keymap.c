@@ -2,6 +2,7 @@
 
 #include "features/features.h"
 #include "features/feature_keycodes.h"
+#include "lib/leds.h"
 
 #ifdef COMBO_ENABLE
 #include "def/keymap_combos.h"

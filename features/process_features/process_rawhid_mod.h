@@ -6,6 +6,7 @@
 #include "../../config.h"
 #include "../feature_keycodes.h"
 #include "../rawhid_mod.h"
+#include "../../lib/leds.h"
 #include "raw_hid.h"
 #include "stdbool.h"
 #include "string.h"

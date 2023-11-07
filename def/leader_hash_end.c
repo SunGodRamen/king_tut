@@ -10,11 +10,11 @@ void macro_lname(void) {
 }
 
 void macro_email(void) {
-    SEND_STRING("a.solar.lizard@gmail.com");
+    SEND_STRING("avons394@gmail.com");
 }
 
 void macro_phone(void) {
-    SEND_STRING("3233336775");
+    SEND_STRING("3236466099");
 }
 
 void hotkey_vs_command(void) {
