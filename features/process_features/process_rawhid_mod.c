@@ -3,6 +3,8 @@
 bool raw_modifying = false;
 uint8_t response_data[32] = {0};
 
+void set_leds(enum led_state state, int led1, int led2, int led3);
+
 bool process_rawhid_mod(uint16_t keycode, keyrecord_t *record) {
     // Handle FT_RAW_MOD first
     if (keycode == FT_RAW_MOD) {
@@ -68,10 +70,6 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
             for (int i = 1; i < 32; i++) {
                 response_data[i] = 0; // Clear the rest of the response data
             }
-        } else {
-            // Echo the data back
-            response_data[0] = data[0];
-            response_data[1] = data[1];
         }
 
         uprintf("Sending Raw Response: [%02X, %02X, %02X]\n", response_data[0], response_data[1], response_data[2]);
@@ -85,3 +83,27 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         uprintf("Data length less than expected.\n");
     }
 }
+
+void set_leds(enum led_state state, int led1, int led2, int led3) {
+    // Control the first LED
+    if (state == LED_ON && led1) {
+        ergodox_right_led_1_on();
+    } else {
+        ergodox_right_led_1_off();
+    }
+
+    // Control the second LED
+    if (state == LED_ON && led2) {
+        ergodox_right_led_2_on();
+    } else {
+        ergodox_right_led_2_off();
+    }
+
+    // Control the third LED
+    if (state == LED_ON && led3) {
+        ergodox_right_led_3_on();
+    } else {
+        ergodox_right_led_3_off();
+    }
+}
+
